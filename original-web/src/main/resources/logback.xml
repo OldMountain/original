@@ -33,7 +33,7 @@
         </rollingPolicy>
     </appender>
 
-    <logger name="com.demo.oldmountain.dao" level="DEBUG" />
+    <logger name="com.original.dao" level="DEBUG" />
     <logger name="org.mybatis">
         <level value="TRACE"/>
     </logger>
