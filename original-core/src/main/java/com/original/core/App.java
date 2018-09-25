@@ -1,4 +1,4 @@
-package com.ftt.core;
+package com.original.core;
 
 /**
  * Hello world!
