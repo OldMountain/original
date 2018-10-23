@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,8 @@ public class SwaggerController {
 
     @ApiOperation(value = "测试")
     @RequestMapping(value = "/test",produces = "application/json",method = RequestMethod.POST)
-    public String test(@ApiParam(value = "66",required = true)@RequestParam String ss){
+    public String test(@ApiParam(value = "66",required = true)@RequestParam String ss,
+                       @ApiParam(value = "用户",required = true)@RequestBody User user){
         List<User> list = userService.list();
         return list.toString();
     }
