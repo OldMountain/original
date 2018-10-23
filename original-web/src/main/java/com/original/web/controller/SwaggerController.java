@@ -7,10 +7,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.ws.rs.Produces;
 import java.util.List;
@@ -26,14 +26,18 @@ import java.util.List;
 @RequestMapping("/swagger")
 public class SwaggerController {
 
-    @Autowired
     private UserService userService;
+
+    @Autowired
+    public SwaggerController(UserService userService) {
+        this.userService = userService;
+    }
 
     @ApiOperation(value = "测试")
     @RequestMapping(value = "/test",produces = "application/json",method = RequestMethod.POST)
-    public String test(@ApiParam(value = "66",required = true)@RequestParam String ss,
-                       @ApiParam(value = "用户",required = true)@RequestBody User user){
+    @ResponseBody
+    public List<User> test(@ApiParam(value = "66",required = true)@RequestParam String ss){
         List<User> list = userService.list();
-        return list.toString();
+        return list;
     }
 }
